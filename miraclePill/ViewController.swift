@@ -12,6 +12,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
 
     @IBOutlet weak var statePicker: UIPickerView!
     @IBOutlet weak var statePickerBtn: UIButton!
+    @IBOutlet weak var countryLabel: UILabel!
+    @IBOutlet weak var countryTextFieldLabel: UITextField!
+    @IBOutlet weak var zipLabel: UILabel!
+    @IBOutlet weak var zipTextFieldLabel: UITextField!
+    @IBOutlet weak var successIndicator: UIImageView!
     
     let states = ["Alaska","Arkansas","Alabama","California","New York","Maine"]
     
@@ -24,13 +29,15 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func stateBtnPressed(_ sender: Any) {
-        
         statePickerBtn.isHidden = false
+        countryLabel.isHidden = true
+        countryTextFieldLabel.isHidden = true
+        zipLabel.isHidden = true
+        zipTextFieldLabel.isHidden = true
+        
         
     }
     
@@ -50,7 +57,21 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         statePickerBtn.setTitle(states[row], for: UIControlState()) //UIControlState.normal
         statePicker.isHidden = true
         
+        countryLabel.isHidden = false
+        countryTextFieldLabel.isHidden = false
+        zipLabel.isHidden = false
+        zipTextFieldLabel.isHidden = false
+        
     }
+    
+    @IBAction func buyBtnPressed(_ sender: Any) {
+        for subview in view.subviews {
+            subview.isHidden = true
+        }
+        
+        successIndicator.isHidden = false
+    }
+    
     
 }
 
